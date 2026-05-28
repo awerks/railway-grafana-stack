@@ -6,7 +6,9 @@ scrape_configs:
     - job_name: stremio-double-subtitles
       metrics_path: /metrics
       scheme: https
-      bearer_token: ${{ secrets.METRICS_TOKEN }}
+      basic_auth:
+          username: ${{ secrets.METRICS_USERNAME }}
+          password: ${{ secrets.METRICS_PASSWORD }}
       static_configs:
           - targets:
                 - stremio-double-subtitles
